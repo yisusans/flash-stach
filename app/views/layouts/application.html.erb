@@ -10,16 +10,21 @@
   <% flash.each do |message_type, message| %>
     <div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
+  <nav class="navbar navbar-default">
   <ul>
   <% if logged_in? %>
-  	<li><%= link_to "Log out", logout_path, method: :delete %></li>
-    <li><%= link_to current_user.email, user_path(:id => current_user.id) %></li>
+  	<%= link_to "Log out", logout_path, method: :delete %>
+    | <%= link_to current_user.email, user_path(:id => current_user.id) %>
   <% else %>
-    <li><%= link_to "Login", login_path%></li>
-    <li><%= link_to "Register", new_user_path%></li>
+    | <%= link_to "Login", login_path%>
+    | <%= link_to "Register", new_user_path%>
   <% end %>
-    <li><%= link_to "Home", root_path %></li>
+    | <%= link_to "Home", root_path %>
+    </ul>
+    </nav>
+<div class="container">
 <%= yield %>
+</div>
 
 </body>
 </html>
