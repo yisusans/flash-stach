@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, :except => [:index]
   resources :rounds
+  resources :guesses
 
   root 'deck#index'
   # The priority is based upon order of creation: first created -> highest priority.

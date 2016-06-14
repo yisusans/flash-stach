@@ -8,7 +8,7 @@ class RoundsController < ApplicationController
 		end
 		@card_deck = @round.deck.cards.shuffle
 		@card = @card_deck[0]
-		erb :"cards/show"
+		render 'cards/show'
 	end
 
 	def show

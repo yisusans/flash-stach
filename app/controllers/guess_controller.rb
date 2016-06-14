@@ -1,17 +1,17 @@
 class GuessController < ApplicationController
 
-	post '/guess' do
+	def create
 		submitted_answer = Card.find_by(id: params[:card_id])
 		if submitted_answer.answer.downcase == params[:response].downcase
-		    @correct = 'true'
+		    correct = true
 		else
-		    @correct = 'false'
+		    correct = false
 		end
 
 		if logged_in?
-		    @guess = Guess.create(user_id: current_user.id, round_id: params[:round_id], card_id: params[:card_id], response: params[:response], is_correct?: @correct)
+		    @guess = Guess.create(user_id: current_user.id, round_id: params[:round_id], card_id: params[:card_id], response: params[:response], is_correct: correct)
 	    else
-		    @guess = Guess.create(round_id: params[:round_id], card_id: params[:card_id], response: params[:response], is_correct?: @correct)
+		    @guess = Guess.create(round_id: params[:round_id], card_id: params[:card_id], response: params[:response], is_correct: correct)
 		end
 
 		@round = Round.find_by(id: params[:round_id])

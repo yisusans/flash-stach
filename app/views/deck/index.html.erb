@@ -2,9 +2,10 @@
 
 <ul>
 <% @decks.each do |deck| %>
-	<p><%=deck.category%><p>
 	<%= form_for deck, :url => rounds_path, :html => { :method => :post} do |f| %>
-		<%= f.submit %>
+		<%= hidden_field_tag(:deck_id, value=deck.id)%>
+		<br>
+		<%= f.submit deck.category %>
 	<% end %>
 	</li>
 
