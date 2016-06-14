@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   resources :users, :except => [:index]
+  resources :rounds
 
   root 'deck#index'
   # The priority is based upon order of creation: first created -> highest priority.

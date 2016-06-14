@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
 	
-	post '/rounds' do
+	def create
 		if logged_in?
 			@round = Round.create(user_id: current_user.id, deck_id: params[:deck_id])
 		else
@@ -11,7 +11,7 @@ class RoundsController < ApplicationController
 		erb :"cards/show"
 	end
 
-	get '/rounds/:id' do
+	def show
     	@round = Round.find_by(id: params[:id])
 		if @round
 		    @round_category = @round.deck.category

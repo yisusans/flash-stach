@@ -2,12 +2,12 @@
 
 <ul>
 <% @decks.each do |deck| %>
-	<li><form method="post" action="/rounds">
-	<input type="hidden" name="deck_id" value="<%= deck.id %>" >
 	<p><%=deck.category%><p>
-	<input type="submit" value="start a round">
-	</form>
+	<%= form_for deck, :url => rounds_path, :html => { :method => :post} do |f| %>
+		<%= f.submit %>
+	<% end %>
 	</li>
 
 <% end %>
 </ul>
+
