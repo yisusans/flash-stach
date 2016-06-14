@@ -9,11 +9,11 @@ class Round < ActiveRecord::Base
   end
 
   def correctly_guessed_cards
-  	self.guesses.where(is_correct?: 'true').collect { |guess| guess.card}
+  	self.guesses.where(is_correct: true).collect { |guess| guess.card}
   end
 
   def first_guess
-    false_array = self.guesses.select { |guess| guess.is_correct? == "false" }
+    false_array = self.guesses.select { |guess| guess.is_correct == false }
     unique_guesses = self.guesses
     self.guesses.each do |guess|
       false_array.each do |false_guess|

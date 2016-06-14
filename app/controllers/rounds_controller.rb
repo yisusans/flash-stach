@@ -18,9 +18,9 @@ class RoundsController < ApplicationController
 		    @total_guesses = @round.guesses.length
 		    @total_questions = @round.deck.cards.length
 		    @first_try = @round.first_guess
-		    erb :'/rounds/show'
+		    render '/rounds/show'
 		else
-		    redirect '/'
+		    redirect_to '/'
 		end
 	end
 

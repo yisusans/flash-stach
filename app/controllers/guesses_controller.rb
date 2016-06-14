@@ -1,8 +1,8 @@
-class GuessController < ApplicationController
+class GuessesController < ApplicationController
 
 	def create
 		submitted_answer = Card.find_by(id: params[:card_id])
-		if submitted_answer.answer.downcase == params[:response].downcase
+		if submitted_answer.answer.downcase == params[:'/guesses'][:response].downcase
 		    correct = true
 		else
 		    correct = false
@@ -18,11 +18,10 @@ class GuessController < ApplicationController
 		@card = @round.next_card
 
 	    if @card
-		    erb :"cards/show"
+		    render "cards/show"
 	    else
-		    redirect "/rounds/#{@round.id}"
+		    redirect_to "/rounds/#{@round.id}"
 	    end
 	end
-
 
 end
