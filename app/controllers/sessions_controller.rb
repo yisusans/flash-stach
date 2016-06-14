@@ -15,6 +15,6 @@ class SessionsController < ApplicationController
 
   def destroy
   	session.delete(:user_id)
-  	redirect_to	logout_path
+  	redirect_to	welcome_index_path
   end
 end
