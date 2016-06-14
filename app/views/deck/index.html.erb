@@ -1,0 +1,13 @@
+<h1>Flash-Stach!</h1>
+
+<ul>
+<% @decks.each do |deck| %>
+	<li><form method="post" action="/rounds">
+	<input type="hidden" name="deck_id" value="<%= deck.id %>" >
+	<p><%=deck.category%><p>
+	<input type="submit" value="start a round">
+	</form>
+	</li>
+
+<% end %>
+</ul>

@@ -11,7 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613214451) do
+ActiveRecord::Schema.define(version: 20160614010814) do
+
+  create_table "cards", force: :cascade do |t|
+    t.string   "question",   null: false
+    t.string   "answer",     null: false
+    t.integer  "deck_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.string   "category",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "guesses", force: :cascade do |t|
+    t.string   "response"
+    t.boolean  "is_correct"
+    t.integer  "user_id"
+    t.integer  "round_id"
+    t.integer  "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "deck_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
