@@ -1,0 +1,14 @@
+<h1>Flash-Stach!</h1>
+
+<ul>
+<% @decks.each do |deck| %>
+	<%= form_for deck, :url => rounds_path, :html => { :method => :post} do |f| %>
+		<%= hidden_field_tag(:deck_id, value=deck.id)%>
+		<br>
+		<%= f.submit deck.category %>
+	<% end %>
+	</li>
+
+<% end %>
+</ul>
+

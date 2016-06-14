@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find_by(id: params[:id])
   	@email = @user.email
+    @rounds = @user.rounds
   end
 
   def create
@@ -20,10 +21,12 @@ class UsersController < ApplicationController
   	end
   end
 
+
 private
-	
+
 	def user_params
 		params.require(:user).permit(:email, :password)
 	end
+
 end
 

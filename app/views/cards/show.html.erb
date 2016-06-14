@@ -1,0 +1,13 @@
+<h2><%= @card.deck.category %></h2>
+
+
+<h4><%= @card.question %></h4>
+
+<h3>Enter your guess:</h3>
+
+<%= form_for guesses_path, :url => guesses_path, :html => { :method => :post} do |f| %>
+	<%= hidden_field_tag(:card_id, value=@card.id)%>
+	<%= hidden_field_tag(:round_id, value=@round.id)%>
+	<%= f.text_field :response, placeholder: "answer" %>
+	<%= f.submit "answer" %>
+<% end %>
